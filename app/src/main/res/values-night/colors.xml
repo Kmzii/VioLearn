@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="background">#161616</color>
+    <color name="card_background">#1E1E1E</color>
+    <color name="purple_secondary">#FFD0FD</color>
+    <color name="dialog_night">#1E1E1E</color>
+    <color name="text_color">#FFF</color>
+    <color name="button_color">#F5F5F5</color>
+
+</resources>

@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">VioLearn</string>
+    <string name="to">to</string>
+    <string name="this_week">Current Week</string>
+    <string name="upcoming_week">Upcoming Week</string>
+    <string name="previous_week">Previous Week</string>
+    <string name="daily_percentage">0%</string>
+    <string name="task_start_end">Start: %1$s\nEnd: %2$s</string>
+    <string name="task_name_with_time">%1$s\nStart: %2$s\nEnd: %3$s</string>
+    <string name="achieved_percentage">Achieved: %1$d%%</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="dd_mm_yy">dd-mm-yy</string>
+    <string name="achieved_0">Achieved: 0%</string>
+    <string name="endeavors">Today\'s Endeavors</string>
+    <string name="add_task">Add Task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="enter_task_name">Enter Task Name</string>
+    <string name="start_time">Start Time</string>
+    <string name="selected_start_time">Selected Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="selected_end_time">Selected End Time</string>
+    <string name="end">END</string>
+    <string name="save">SAVE</string>
+    <string name="card_view_item">Clickable CardView Item</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="task_text">Your text here</string>
+    <string name="week_dates_placeholder">%s to %s</string>
+    <string name="date">Date</string>
+    <string name="day">Day</string>
+    <string name="menu">Menu</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_daily">Daily Report</string>
+    <string name="menu_weekly">Weekly Report</string>
+    <string name="menu_subject">Subject Report</string>
+    <string name="menu_sleep">Sleep Tracking</string>
+    <string name="menu_achievements">Achievements</string>
+    <string name="menu_only_for_her">Only For Her</string>
+    <string name="menu_my_space">My Space</string>
+    <string name="back">Back</string>
+    <string name="select_category">Select a category</string>
+    <string name="splash">My Study App</string>
+    <string name="hello_blank_fragment">Hello</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_button_desc">Sign in to your account</string>
+    <string name="sign_in_heading">Hey! I am Your \nStudy Buddy</string>
+    <string name="sign_in_body">Sign in to your account</string>
+    <string name="your_email">Your Email:</string>
+    <string name="password">Password:</string>
+    <string name="your_name">Your Name:</string>
+    <string name="type_your_email">Type your Email</string>
+    <string name="type_your_password">Type your Password</string>
+    <string name="type_your_name">Type your Name</string>
+    <string name="not_registered">Not registered yet?</string>
+    <string name="sign_up_ul"><u>Sign Up</u></string>
+    <string name="create_account">Create Account with \nEmail</string>
+    <string name="re_enter_password">Re-enter Password:</string>
+    <string name="re_enter_your_password">Re-enter your Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in_ul"><u>Sign In</u></string>
+    <string name="already_registered">Already registered?</string>
+    <string name="vio">VIO</string>
+    <string name="learn">LEARN</string>
+    <string name="click_here"><u>Click Here</u></string>
+    <string name="forgot_pass">Forgot Password?</string>
+    <string name="enter_email">Enter your Email address:</string>
+    <string name="reset">Reset</string>
+    <string name="logout">Logout</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="back_button_description">Back</string>
+    <string name="menu_name">John Doe</string>
+    <string name="menu_streak">fetching...</string>
+    <string name="menu_img">Profile Picture</string>
+    <string name="day_date_format">%1\$s : %2\$s</string>
+    <string name="day_and_date">%1$s, %2$s</string>
+    <string name="your_task">Your Task:</string>
+    <string name="type_yor_task">Type your Task</string>
+    <string name="cancel">Cancel</string>
+    <string-array name="task_options_array">
+        <item>Physics</item>
+        <item>Chemistry</item>
+        <item>Zoology</item>
+        <item>Botany</item>
+        <item>Sleep</item>
+        <item>Other</item>
+    </string-array>
+    <string name="task_info">%1\$s\n%2\$s\nStart: %3\$s   End: %4\$s</string>
+    <string name="task_type_time_format">%s: %s</string>
+    <string name="total_study_time_format">%d hours %02d minutes</string>
+    <string name="selected_date_placeholder">%s - %s</string>
+    <string name="select_date">Select Date</string>
+    <string name="time_studied">Time Studied</string>
+    <string name="physics">Physics: </string>
+    <string name="chemistry">Chemistry: </string>
+    <string name="zoology">Zoology: </string>
+    <string name="botany">Botany: </string>
+    <string name="other">Other: </string>
+    <string name="sleep">Sleep: </string>
+    <string name="sleep_time">Your Sleep Time</string>
+    <string name="total_time_studied">Total Time: </string>
+    <string name="graph_text">Graph</string>
+    <string name="select_week">Select Week</string>
+    <string name="ideal_sleep">Your Ideal Sleep Time: </string>
+    <string-array name="hours_array">
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>3 hours</item>
+        <item>4 hours</item>
+        <item>5 hours</item>
+        <item>6 hours</item>
+        <item>7 hours</item>
+        <item>8 hours</item>
+        <item>9 hours</item>
+        <item>10 hours</item>
+        <item>11 hours</item>
+        <item>12 hours</item>
+    </string-array>
+    <string name="percentage_format">%d%%</string>
+    <string name="sleep_percentage">Sleep Percentage</string>
+    <string name="complete">Complete</string>
+    <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
+    <string name="sync_button">Sync</string>
+    <string name="logout_sure">Do you want to Logout?</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Day -->
+    <color name="purple">#CF0CC6</color>
+    <color name="purple_light">#FFD0FD</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="text_primary">#4F4F4F</color>
+    <color name="text_secondary">#6A6A6A</color>
+    <color name="bottom_scroll">#FDF9FD</color>
+    <!-- Night -->
+    <color name="dark_grey">#161616 </color>
+    <color name="card_night">#1E1E1E</color>
+    <color name="dialog_night">#1E1E1E</color>
+    <color name="text_primary_dark">#F5F5F5</color>
+    <color name="purple_dark">#FFD0FD</color>
+
+    <color name="card_background">#FFF</color>
+    <color name="background">#FFF</color>
+    <color name="purple_secondary">#FFD0FD</color>
+    <color name="text_color">#000</color>
+    <color name="button_color">#424242</color>
+
+</resources>

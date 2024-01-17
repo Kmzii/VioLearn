@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "247633752562",
+    "project_id": "my-study-tracker-aef8b",
+    "storage_bucket": "my-study-tracker-aef8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247633752562:android:68d7d90bf5539dfa7a7b6b",
+        "android_client_info": {
+          "package_name": "com.example.mystudytracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Vss__VPIwHyYnx8b2vsLFnJr6UKHcMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

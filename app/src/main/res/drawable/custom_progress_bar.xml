@@ -1,0 +1,17 @@
+<!-- custom_progress_bar.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners android:radius="50dp"/>
+            <solid android:color="@color/purple_secondary" /> <!-- Background color (gray) -->
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="50dp"/>
+                <solid android:color="@color/purple" /> <!-- Fill color (purple) -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

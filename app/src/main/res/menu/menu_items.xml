@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn ="navigation_view">
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_home"
+            android:title="@string/menu_home"
+            android:icon="@drawable/home_outline"/>
+
+        <item
+            android:id="@+id/menu_daily"
+            android:title="@string/menu_daily"
+            android:icon="@drawable/daily_outline"/>
+
+        <item
+            android:id="@+id/menu_weekly"
+            android:title="@string/menu_weekly"
+            android:icon="@drawable/weekly_outline"/>
+
+        <item
+            android:id="@+id/menu_sleep"
+            android:title="@string/menu_sleep"
+            android:icon="@drawable/sleep_outline"/>
+
+        <item
+            android:id="@+id/menu_achievements"
+            android:title="@string/menu_achievements"
+            android:icon="@drawable/achievements_outline"/>
+
+        <item
+            android:id="@+id/menu_only_for_her"
+            android:title="@string/menu_my_space"
+            android:icon="@drawable/heart"/>
+        <item
+            android:title=""
+            android:enabled="false"/>
+        <item
+            android:id="@+id/menu_logout"
+            android:title="@string/logout"
+            android:icon="@drawable/log_out_outline"/>
+
+    </group>
+
+</menu>

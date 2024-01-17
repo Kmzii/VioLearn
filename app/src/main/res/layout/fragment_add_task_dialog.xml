@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CustomDialogTheme"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    app:strokeWidth="0dp"
+    tools:context=".todolist.AddTaskDialogFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/addTaskHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/sf_pro_text_bold"
+            android:text="@string/add_task"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Dropdown Spinner -->
+        <Spinner
+            android:id="@+id/dropdownMenu"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/spinner_background"
+            android:entries="@array/task_options_array"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addTaskHeading" />
+
+        <TextView
+            android:id="@+id/addTaskText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/your_task"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dropdownMenu" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/addTaskCard"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            app:cardBackgroundColor="@color/purple_secondary"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addTaskText"
+            app:strokeColor="@android:color/transparent"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/purple_secondary"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:hintEnabled="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addTaskEt"
+                        style="@style/secondaryColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/type_yor_task"
+                        android:inputType="textEmailAddress"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_primary"
+                        android:textCursorDrawable="@drawable/custom_cursor"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/startTimeLayout"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/spinner_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addTaskCard">
+
+            <Button
+                android:id="@+id/startTimeButton"
+                style="@style/CustomButtonTextAppearance"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:text="@string/start_time"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/selectedStartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:textColor="@color/black"
+                android:background="@android:color/transparent"
+                android:text=""
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/endTimeLayout"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/spinner_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/startTimeLayout">
+
+            <Button
+                android:id="@+id/endTimeButton"
+                style="@style/CustomButtonTextAppearance"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:text="@string/end_time"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/selectedEndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:textColor="@color/black"
+                android:background="@android:color/transparent"
+                android:text=""
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/endTimeLayout">
+
+            <Button
+                android:id="@+id/cancelButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/cancel"
+                android:textAllCaps="true"
+                android:textColor="@color/button_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/saveButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/save"
+                android:textAllCaps="true"
+                android:textColor="@color/button_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+
