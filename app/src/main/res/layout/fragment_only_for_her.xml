@@ -2,9 +2,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ScreenBackground"
-    android:elevation="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="8dp"
     tools:context=".menu.OnlyForHerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,29 +41,36 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <ScrollView
+    <RelativeLayout
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="600sp"
+        android:background="@drawable/scroll_rounded"
         android:clipToPadding="false"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        android:background="@drawable/scroll_rounded">
-        <LinearLayout
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <!-- ImageButton -->
+        <ImageView
+            android:id="@+id/scrollButton"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/scroll_button"
+            android:scaleType="centerCrop"
+            android:src="@drawable/remove_outline" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parentRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@+id/scrollButton"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp" />
 
-            <!-- ImageButton -->
-            <ImageButton
-                android:id="@+id/scrollButton"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/remove_outline"
-                android:scaleType="centerCrop"
-                android:background="@android:color/transparent"
-                android:layout_gravity="center|top"/>
+    </RelativeLayout>
 
-        </LinearLayout>
-
-    </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

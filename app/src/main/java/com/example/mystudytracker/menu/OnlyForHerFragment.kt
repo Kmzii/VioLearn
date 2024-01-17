@@ -6,24 +6,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mystudytracker.R
+import com.example.mystudytracker.databinding.FragmentOnlyForHerBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class OnlyForHerFragment : Fragment() {
 
+    private lateinit var parentRecyclerView: RecyclerView
+    private lateinit var binding: FragmentOnlyForHerBinding
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_only_for_her, container, false)
+        binding = FragmentOnlyForHerBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bottomSheet: View = requireView().findViewById(R.id.bottomSheet)
+        val bottomSheet: View = binding.bottomSheet
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
+        parentRecyclerView = binding.parentRecyclerView
+        parentRecyclerView.setHasFixedSize(true)
+        parentRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         bottomSheetBehavior.apply {
             peekHeight = 200
@@ -31,7 +42,7 @@ class OnlyForHerFragment : Fragment() {
             isHideable = false // This prevents the bottom sheet from completely hiding
         }
 
-        val imageButton: View = requireView().findViewById(R.id.scrollButton)
+        val imageButton: View = binding.scrollButton
         imageButton.setOnClickListener {
             if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
