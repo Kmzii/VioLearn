@@ -62,10 +62,10 @@
             android:src="@drawable/remove_outline" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/parentRecyclerView"
+            android:id="@+id/categoriesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/scrollButton"
+            android:layout_below="@id/scrollButton"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"

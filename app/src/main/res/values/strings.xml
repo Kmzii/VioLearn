@@ -124,4 +124,8 @@
     <string name="sync_button">Sync</string>
     <string name="logout_sure">Do you want to Logout?</string>
     <string name="scroll_button">Scroll Button</string>
+    <string name="plus_button">Plus</string>
+    <string name="minus_button">Minus</string>
+    <string name="count">0</string>
+
 </resources>

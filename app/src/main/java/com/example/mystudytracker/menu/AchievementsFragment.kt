@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,8 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.time.DayOfWeek
@@ -36,6 +39,8 @@ class AchievementsFragment : Fragment() {
     private lateinit var syncButton: ImageButton
     private lateinit var lottieAnimationView: LottieAnimationView
     private var loadedItemsCount = 10
+    private var fetchJob: Job? = null // Declare a Job variable to keep track of the coroutine job
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,10 +92,12 @@ class AchievementsFragment : Fragment() {
         // Counter to keep track of the items loaded
         var itemsLoadedCounter = 0
 
-        var dailyCompletion: Int
+        var dailyCompletions = mutableListOf<Pair<String, String>>() // Pair of date and achievement message
 
-        CoroutineScope(Dispatchers.Main).launch {
+        fetchJob = viewLifecycleOwner.lifecycleScope.launch {
             lottieAnimationView.visibility = View.VISIBLE // Show Lottie animation
+
+            val jobList = mutableListOf<Job>()
 
             while (itemsLoadedCounter < loadedItemsCount) {
                 // Get the day name
@@ -111,51 +118,74 @@ class AchievementsFragment : Fragment() {
                 val dayPath =
                     "Users/${FirebaseAuth.getInstance().currentUser?.uid}/Weeks/dailyCompletion/Week - $formattedWeekDates/$dayName - $formattedDate/dailyCompletionPercentage"
 
-                // Fetch the completion percentage for the day using a coroutine
-                val completionPercentage = fetchDailyCompletionAsync(dayPath)
-
-                dailyCompletion = completionPercentage
-
-                Log.d("CompletionPath", "$dayPath | $dailyCompletion")
-
-                // Log Yay! if completion is 100%
-                if (completionPercentage == 100) {
-                    Log.d("CompletionLog", "Yay! You have completed all tasks for $formattedDate")
-
-                    adapter.addAchievement("${formattedDate}: Yay! You have completed all tasks for today.")
-                }
+                // Add coroutine jobs to the list
+                jobList.add(fetchDailyCompletionAsync(dayPath, dailyCompletions))
 
                 itemsLoadedCounter++
                 currentDate = currentDate.minusDays(1)
 
             }
+
+            // Wait for all coroutine jobs to complete
+            jobList.joinAll()
+
+            //Sort
+            dailyCompletions.sortWith(compareByDescending { LocalDate.parse(it.first, DateTimeFormatter.ofPattern("dd MMM yyyy")) })
+
+
+            // Process results from dailyCompletions list
+            for ((date, achievementMessage) in dailyCompletions) {
+                // Display achievement only if completion is 100%
+                if (achievementMessage.isNotEmpty()) {
+                    // Add the achievement to the adapter
+                    adapter.addAchievement("$date: $achievementMessage")
+                }
+            }
+
             adapter.notifyDataSetChanged()
             syncButton.isEnabled = true
             lottieAnimationView.visibility = View.GONE // Hide Lottie animation
-
         }
     }
 
     // Function to fetch completion percentage asynchronously using coroutines
     @OptIn(ExperimentalCoroutinesApi::class)
-    private suspend fun fetchDailyCompletionAsync(dayPath: String): Int {
-        return suspendCancellableCoroutine { continuation ->
-            val databaseRef = FirebaseDatabase.getInstance().getReference(dayPath)
+    private fun fetchDailyCompletionAsync(dayPath: String, resultContainer: MutableList<Pair<String, String>>): Job {
+        return CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val databaseRef = FirebaseDatabase.getInstance().getReference(dayPath)
+                val completionPercentage = suspendCancellableCoroutine<Int> { continuation ->
+                    databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            val percentage = snapshot.getValue(Int::class.java) ?: 0
+                            continuation.resume(percentage) {
+                                // Handle cancellation if needed
+                                Log.e("fetchDailyCompletionAsync", "Fetch operation cancelled.")
+                            }
+                        }
 
-            databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val completionPercentage = snapshot.getValue(Int::class.java) ?: 0
-                    continuation.resume(completionPercentage) {
-                        // Handle cancellation if needed
-                        Log.e("DataRetrieval", "Fetch operation cancelled.")
-                    }
+                        override fun onCancelled(error: DatabaseError) {
+                            continuation.resumeWithException(error.toException())
+                        }
+                    })
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-                    Log.e("DataRetrieval", "Error retrieving data: ${error.message}")
-                    continuation.resumeWithException(error.toException())
+                // If completion is 100%, add the date and achievement message to the result list
+                if (completionPercentage == 100) {
+                    val date = dayPath.substringAfterLast(" - ").substringBefore("/")
+                    val achievementMessage = "Yay! You have completed all tasks for this day."
+                    resultContainer.add(Pair(date, achievementMessage))
                 }
-            })
+            } catch (e: Exception) {
+                Log.e("fetchDailyCompletionAsync", "Error: ${e.message}")
+            }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        // Cancel the coroutine job when the view is destroyed
+        fetchJob?.cancel()
     }
 }
