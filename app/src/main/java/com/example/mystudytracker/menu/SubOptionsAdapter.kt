@@ -17,7 +17,8 @@ import java.util.Locale
 
 class SubOptionsAdapter(private val subOptions: List<Pair<String, Int>>,
                         private val subOptionCounts: MutableMap<String, Int>,
-                        private val uid: String
+                        private val uid: String,
+                        private val updateCountInFirebase: (String, Int) -> Unit // Add this as a parameter
 ) :
     RecyclerView.Adapter<SubOptionsAdapter.ViewHolder>() {
 
@@ -63,33 +64,6 @@ class SubOptionsAdapter(private val subOptions: List<Pair<String, Int>>,
         }
     }
 
-    private fun updateCountInFirebase(itemName: String, itemCount: Int) {
-        val databaseReference = FirebaseDatabase.getInstance().reference
-
-        val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-        val startDate = getStartOfWeek(currentDateCalendar)
-        val endDate = getEndOfWeek(currentDateCalendar)
-        val formattedDates = "${dateFormat.format(startDate)} to ${dateFormat.format(endDate)}"
-
-        val uidPath = "Users/$uid/mySpace/${formattedDates}/$itemName"
-
-        // Update the count in the Firebase Realtime Database
-        databaseReference.child(uidPath).setValue(itemCount)
-    }
-
-    private fun getStartOfWeek(calendar: Calendar): Date {
-        val cal = calendar.clone() as Calendar
-        cal.firstDayOfWeek = Calendar.MONDAY
-        cal.set(Calendar.DAY_OF_WEEK, cal.firstDayOfWeek)
-        return cal.time
-    }
-
-    private fun getEndOfWeek(calendar: Calendar): Date {
-        val cal = calendar.clone() as Calendar
-        cal.firstDayOfWeek = Calendar.MONDAY
-        cal.set(Calendar.DAY_OF_WEEK, cal.firstDayOfWeek + 6)
-        return cal.time
-    }
 
     override fun getItemCount(): Int {
         return subOptions.size

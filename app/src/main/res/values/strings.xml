@@ -70,7 +70,7 @@
     <string name="navigation_drawer_close">Close</string>
     <string name="back_button_description">Back</string>
     <string name="menu_name">John Doe</string>
-    <string name="menu_streak">fetching...</string>
+    <string name="menu_streak">fetching…</string>
     <string name="menu_img">Profile Picture</string>
     <string name="day_date_format">%1\$s : %2\$s</string>
     <string name="day_and_date">%1$s, %2$s</string>
@@ -123,9 +123,16 @@
     <string name="delete_button">Delete</string>
     <string name="sync_button">Sync</string>
     <string name="logout_sure">Do you want to Logout?</string>
-    <string name="scroll_button">Scroll Button</string>
+    <string name="scroll_button">Scroll</string>
     <string name="plus_button">Plus</string>
     <string name="minus_button">Minus</string>
     <string name="count">0</string>
+    <string name="item_name">Item Name</string>
+    <string name="quantity">Quantity: 0</string>
+    <string name="default_img">Default Image</string>
+    <string name="option_image">Sub Option Image</string>
+    <string name="quantity_text">Quantity: %d</string>
+    <string name="my_space_progress_title_0">You have completed </string>
+    <string name="my_space_progress_title">You have completed %d%%</string>
 
 </resources>

@@ -8,38 +8,131 @@
     tools:context=".menu.OnlyForHerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/back_button_description"
-            android:padding="15dp"
-            android:src="@drawable/ic_back_arrow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/sf_pro_text_bold"
-            android:text="@string/menu_my_space"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent">
 
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/back_button_description"
+                android:padding="15dp"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/sf_pro_text_bold"
+                android:text="@string/menu_my_space"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16sp"
+                android:paddingEnd="16sp"
+                android:paddingBottom="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/progressTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/my_space_progress_title_0" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/progressTitle"
+                    android:layout_marginVertical="8sp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/custom_progress_bar"
+                    android:visibility="visible" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/catContainer"
+                    android:layout_below="@id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/catText"
+                        android:layout_width="150sp"
+                        android:layout_height="100sp"
+                        android:layout_marginEnd="100sp"
+                        android:layout_marginBottom="50sp"
+                        android:scaleX="1.5"
+                        android:scaleY="1.5"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:src="@drawable/text_bubble"/>
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/catAnimation"
+                        android:layout_width="150sp"
+                        android:layout_height="220sp"
+                        android:layout_marginTop="40sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:scaleX="2"
+                        android:scaleY="2"
+                        app:lottie_fileName="my_space_cat.json"
+                        android:layerType="software"
+                        android:scaleType="centerInside"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/iWouldLikeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_below="@id/catContainer"
+                    android:text="I would like some:" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/iWouldLikeRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/iWouldLikeText"
+                    android:layout_marginBottom="110sp" />
+            </RelativeLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:id="@+id/bottomSheet"
@@ -72,5 +165,7 @@
             android:layout_marginBottom="16dp" />
 
     </RelativeLayout>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

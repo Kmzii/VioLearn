@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mystudytracker.R
 import com.google.firebase.auth.FirebaseAuth
-import java.util.Calendar
 
-class ExpandableAdapter(private val items: List<ExpandableItem>) :
+class ExpandableAdapter(private val items: List<ExpandableItem>,
+                        private val updateCountInFirebase: (String, Int) -> Unit
+
+) :
     RecyclerView.Adapter<ExpandableAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -59,7 +61,11 @@ class ExpandableAdapter(private val items: List<ExpandableItem>) :
         val userUid = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
         // Setup and bind sub-options RecyclerView
-        val subOptionsAdapter = SubOptionsAdapter(item.subOptions, item.subOptionCounts, userUid)
+        val subOptionsAdapter = SubOptionsAdapter(
+            item.subOptions, item.subOptionCounts, userUid,
+            updateCountInFirebase
+        )
+
         holder.subOptionsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = subOptionsAdapter

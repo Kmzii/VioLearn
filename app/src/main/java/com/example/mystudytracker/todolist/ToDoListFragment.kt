@@ -57,6 +57,7 @@ class ToDoListFragment : Fragment(),
     // Implement the interface method to display the animation
     override fun onCheckBoxChecked(checked: Boolean) {
         val lottieAnimationView = view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView)
+        val lottieConfettiAnimation = view?.findViewById<LottieAnimationView>(R.id.lottieConfettiAnimation)
 
         if (checked) {
             lottieAnimationView?.let { newAnimationView ->
@@ -76,9 +77,17 @@ class ToDoListFragment : Fragment(),
                     currentAnimation?.visibility = View.GONE
                 }, 2000)
             }
+
+            // Check if completion percentage is 100 and display confetti animation
+            val completionPercentage = calculateDailyCompletionPercentage(taskList)
+            if (completionPercentage == 100f) {
+                lottieConfettiAnimation?.visibility = View.VISIBLE
+                lottieConfettiAnimation?.playAnimation()
+            }
         } else {
             currentAnimation?.cancelAnimation()
             currentAnimation?.visibility = View.GONE
+            lottieConfettiAnimation?.visibility = View.GONE  // Hide confetti animation if checkbox is unchecked
             animationHandler?.removeCallbacksAndMessages(null)
         }
     }

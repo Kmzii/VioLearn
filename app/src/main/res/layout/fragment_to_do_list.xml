@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/ScreenBackground"
     tools:context=".todolist.ToDoListFragment">
+
 
     <LinearLayout
         android:id="@+id/progressLayout"
@@ -101,9 +102,23 @@
         android:id="@+id/lottieAnimationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:lottie_autoPlay="true"
-        android:visibility="gone"
         android:layout_centerInParent="true"
+        android:translationZ="5dp"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
         app:lottie_fileName="taskcomplete.json" />
+
+    <!-- LottieConfettiAnimation -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieConfettiAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:translationZ="5dp"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="confetti.json" />
+
 
 </RelativeLayout>

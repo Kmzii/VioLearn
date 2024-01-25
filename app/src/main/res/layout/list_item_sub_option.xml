@@ -13,8 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="8sp"
-        android:contentDescription="Sub-option Image"
-        android:src="@drawable/forgot_password" />
+        android:contentDescription="@string/option_image"
+        android:src="@drawable/undraw_breakfast_psiw" />
 
     <TextView
         android:id="@+id/subOptionTextView"
