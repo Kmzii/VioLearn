@@ -15,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MyStudyTracker"
+rootProject.name = "VioLearn"
 include(":app")
